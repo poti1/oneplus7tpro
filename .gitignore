@@ -4,7 +4,7 @@
 !.gitignore
 
 # Too big to upload
-adb-fastboot/platform-tools/STOCK/images/
+adb-fastboot/platform-tools/STOCK/images/*.img
 termux-*.apk
 lineage-*
 MindTheGapps-*
