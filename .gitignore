@@ -1,0 +1,12 @@
+# hidden files
+.*
+
+!.gitignore
+
+# Too big to upload
+adb-fastboot/platform-tools/STOCK/images/
+termux-*.apk
+lineage-*
+MindTheGapps-*
+twrp-*
+

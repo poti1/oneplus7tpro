@@ -1,0 +1,69 @@
+Setup:
+   - Follow this guide for setting up adb on the PC:
+      https://www.androidauthority.com/lineageos-install-guide-893303/
+   - Should have this downloaded and unzipped:
+      platform-tools_r33.0.1-linux.zip
+   - Download these files and link:
+      RECOVERY.img -> lineage-18.1-20220412-recovery-hotdog.img
+      LINEAGE.zip  -> lineage-18.1-20220412-nightly-hotdog-signed.zip
+      GAPPS.zip    -> MindTheGapps-11.0.0-arm64-20220217_100228.zip
+      TWRP.img     -> twrp-3.6.1_11-0-hotdog.img
+   - Create COPY_TO_DOWNLOADS folder:
+      app-debug.apk (Magisk) from https://raw.githubusercontent.com/topjohnwu/magisk-files/canary/app-debug.apk
+      boot -> ../STOCK/images/boot.img
+      safetynet-fix-v2.2.1.zip from https://github.com/kdrag0n/safetynet-fix/releases/tag/v2.2.0
+   - Stock Rom:
+      - Download:
+         https://www.oneplus.com/global/support/softwareupgrade/details?code=PM1574162297465
+      - Unzip using:
+         payload-dumper-go_1.2.0_linux_amd64/payload-dumper-go
+      - Rename extracted folder to:
+         STOCK
+
+This will change to a custom ROM (LineageOS):
+   https://wiki.lineageos.org/devices/hotdog/#supported-models
+
+This will restore OnePlus 7T Pro to Stock Rom (Optionally Root):
+   - Create boot.img patch file (If Rooting):
+      https://forum.xda-developers.com/t/working-safetynet-with-pixel-6-pro-android-12.4354149/
+         - Use Magisk to create magisk_patched-*.img from boot.img
+         - Copy patch file to STOCK/images/
+   - Flash the stock ROM (OOS latest version)
+         cd STOCK
+         adb reboot fastboot
+         FLASH_STOCK.sh    # --slot=all only works when in recovery->fastboot
+   - Do a full factory reset through the TWRP recovery
+         fastboot boot TWRP.img
+         # Wipe -> All options.
+   - Flash stock boot.img
+         adb reboot fastboot
+         fastboot flash --slot=all boot boot.img
+   - Flash custom boot if (If Rooting):
+         ROOT.sh
+   - Again enter recovery mode in stock recovery. Do a full wipe.
+         fastboot reboot recovery
+         # Wipe -> All options.
+   - Now lock the bootloader (unless Rooting):
+         fastboot oem lock --skip-reboot 
+   - Reboot to enter stock recovery and wipe all again
+         fastboot reboot recovery
+         # Wipe -> All options.
+   - Reboot
+         This may require a factory reset if you get put into 'Data may be corrupted'
+   - Copy 'COPY_TO_DOWNLOADS' to downloads.
+   - Pass SafetyNet Checks (If Rooting):
+      - Magisk Manager -> Direct Install
+      - Reboot device
+      - In Magisk Manager, go to the Settings and enable Zygisk and Enforce DenyList
+      - Configure DenyList:
+         com.google.android.gms
+         com.google.android.gms.unstable
+      - In Magisk Settings, choose to Hide the Magisk app.
+      - Reboot your device and test SafetyNet with an app like YASNAC
+      - If you're still failing CTS, you can try to clear app data for:
+         Google Play Services
+         Play Store
+
+How to install OTA update and keep root:
+   - https://nerdschalk.com/oneplus-7t-pro-root/
+
