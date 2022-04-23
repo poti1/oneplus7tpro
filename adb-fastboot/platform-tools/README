@@ -93,6 +93,8 @@ How to install OTA update and keep root:
       - Do NOT reboot.
       - Open Magisk Manager.
       - Go to Install > Install and click on Direct Install.
-      - Inside Magisk Manager, head over to Install/Install/Inactive Slot.
+      - Inside Magisk Manager, head over to Install/Install/Inactive Slot (After OTA).
       - Manually reboot the OnePlus 7T Pro.
+      - Updates folder and magisk patch is not needed, but merely in case of issues
+         when doing an update.
 
