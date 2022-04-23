@@ -73,7 +73,8 @@ How to install OTA update and keep root:
    Summary:
       - Disable Automatic system updates:
          Settings -> System -> Developer Options -> Automatic system updates
-      - Disable all Magisk modules, before installing the update, then reboot.
+      - Disable all Magisk modules, before installing the update.
+      - Reboot.
       - Go to Settings > System update and click the Settings icon on the top right corner.
       - Backup the OTA backup:
          Internal/.Ota
