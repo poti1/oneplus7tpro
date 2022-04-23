@@ -1,68 +1,84 @@
+   ____             ____  __              ___________   ____           
+  / __ \____  ___  / __ \/ /_  _______   /__  /_  __/  / __ \_________ 
+ / / / / __ \/ _ \/ /_/ / / / / / ___/     / / / /    / /_/ / ___/ __ \
+/ /_/ / / / /  __/ ____/ / /_/ (__  )     / / / /    / ____/ /  / /_/ /
+\____/_/ /_/\___/_/   /_/\__,_/____/     /_/ /_/    /_/   /_/   \____/ 
+                                                                       
+
+This tutorial explains how to root, unroot, and update a rooted OnePlus 7T Pro phone.
+
 Setup:
    - Follow this guide for setting up adb on the PC:
       https://www.androidauthority.com/lineageos-install-guide-893303/
    - Should have this downloaded and unzipped:
       platform-tools_r33.0.1-linux.zip
-   - Download these files and link:
+   - Download these files and link if switching to LineageOS:
       RECOVERY.img -> lineage-18.1-20220412-recovery-hotdog.img
       LINEAGE.zip  -> lineage-18.1-20220412-nightly-hotdog-signed.zip
       GAPPS.zip    -> MindTheGapps-11.0.0-arm64-20220217_100228.zip
-      TWRP.img     -> twrp-3.6.1_11-0-hotdog.img
-   - Create COPY_TO_DOWNLOADS folder:
+      TWRP.img     -> twrp-3.6.1_11-0-hotdog.img         # Probably not needed.
+   - Create folder: COPY_TO_DOWNLOADS and add to it:
       app-debug.apk (Magisk) from https://raw.githubusercontent.com/topjohnwu/magisk-files/canary/app-debug.apk
-      boot -> ../STOCK/images/boot.img
+      boot -> ../STOCK/images/lastest/boot.img
       safetynet-fix-v2.2.1.zip from https://github.com/kdrag0n/safetynet-fix/releases/tag/v2.2.0
    - Stock Rom:
       - Download:
          https://www.oneplus.com/global/support/softwareupgrade/details?code=PM1574162297465
       - Unzip using:
          payload-dumper-go_1.2.0_linux_amd64/payload-dumper-go
-      - Rename extracted folder to:
-         STOCK
+      - Copy extracted folder to:
+         STOCK/images/OnePlus7TProOxygen_14.O.32_OTA_0320/
+      - Create links to latest stock build:
+         A11.0.6.1 -> OnePlus7TProOxygen_14.O.32_OTA_0320
+         latest -> A11.0.6.1
 
 This will change to a custom ROM (LineageOS):
    https://wiki.lineageos.org/devices/hotdog/#supported-models
 
 This will restore OnePlus 7T Pro to Stock Rom (Optionally Root):
-   - Create boot.img patch file (If Rooting):
+   - Create boot.img patch file (If rooting):
       https://forum.xda-developers.com/t/working-safetynet-with-pixel-6-pro-android-12.4354149/
          - Use Magisk to create magisk_patched-*.img from boot.img
-         - Copy patch file to STOCK/images/
+         - Copy patch file to STOCK/images/latest/
    - Flash the stock ROM (OOS latest version)
          cd STOCK
          adb reboot fastboot
          FLASH_STOCK.sh    # --slot=all only works when in recovery->fastboot
-   - Do a full factory reset through the TWRP recovery
+   - Do a full factory reset through the TWRP recovery   # Optional?
          fastboot boot TWRP.img
          # Wipe -> All options.
    - Flash stock boot.img
          adb reboot fastboot
          fastboot flash --slot=all boot boot.img
-   - Flash custom boot if (If Rooting):
+   - Flash custom boot (If rooting):
          ROOT.sh
    - Again enter recovery mode in stock recovery. Do a full wipe.
          fastboot reboot recovery
          # Wipe -> All options.
-   - Now lock the bootloader (unless Rooting):
+   - Now lock the bootloader (unless rooting):     # Do not lock if rooting!
          fastboot oem lock --skip-reboot 
    - Reboot to enter stock recovery and wipe all again
          fastboot reboot recovery
          # Wipe -> All options.
    - Reboot
          This may require a factory reset if you get put into 'Data may be corrupted'
-   - Copy 'COPY_TO_DOWNLOADS' to downloads.
-   - Pass SafetyNet Checks (If Rooting):
-      - Magisk Manager -> Direct Install
-      - Reboot device
-      - In Magisk Manager, go to the Settings and enable Zygisk and Enforce DenyList
-      - Configure DenyList:
-         com.google.android.gms
-         com.google.android.gms.unstable
-      - In Magisk Settings, choose to Hide the Magisk app.
-      - Reboot your device and test SafetyNet with an app like YASNAC
-      - If you're still failing CTS, you can try to clear app data for:
-         Google Play Services
-         Play Store
+   - Additional setup (if rooting):
+      - Copy 'COPY_TO_DOWNLOADS' to downloads folder on the phone.
+      - Install Magisk apk on the phone.
+      - Open Magisk -> Go to Install > Install and click on Direct Install.
+      - Click button to finish setup (which will also reboot the phone).
+      - Pass SafetyNet Checks:
+         - Magisk -> Direct Install -> safetynet-fix-v2.2.1.zip 
+         - Magisk -> Settings -> enable Zygisk
+         - Magisk -> Settings -> Enforce DenyList
+         - Configure DenyList -> Search: "play"
+            com.google.android.gms
+            com.google.android.gms.unstable
+         - Magisk -> Settings -> Hide the Magisk app.
+         - Reboot your device and test SafetyNet with an app like YASNAC
+         - If you're still failing CTS, clear app data for:
+            Google Play Services
+            Play Store
 
 How to install OTA update and keep root:
    - https://nerdschalk.com/oneplus-7t-pro-root/
@@ -76,26 +92,27 @@ How to install OTA update and keep root:
       - Disable all Magisk modules, before installing the update.
       - Reboot.
       - Go to Settings > System update and click the Settings icon on the top right corner.
-      - Backup the OTA backup:
-         Internal/.Ota
-      - Copy back to PC:
-         STOCK/updates/<VERSION>
-      - Extract images:
-         ../../payload-dumper-go One*.zip
-      - Copy boot.img back to the phone.
-      - Patch boot.img:
-         Magisk -> Install -> "Select and Patch a File"
-      - Copy patched file back to the PC:
-         STOCK/updates/<VERSION>/extracted/
       - Tap on ‘Local upgrade‘ and select the downloaded OTA file needed for installing
          the update.
-      - Click Install.
+      - This is just to have a copy of the update (incase future updates fail):
+         - Backup the OTA update file which is found here on the phone:
+            Internal/.Ota
+         - Copy back to PC:
+            STOCK/images/OnePlus7TProOxygen_14.O.33_OTA_0330
+         - Link new version:
+            A11.0.7.1 -> OnePlus7TProOxygen_14.O.33_OTA_0330
+            latest -> A11.0.7.1
+         - Extract images:
+            ../../payload-dumper-go One*.zip
+         - Copy boot.img back to the phone.
+         - Patch boot.img:
+            Magisk -> Install -> "Select and Patch a File"
+         - Copy patched file back to the PC:
+            STOCK/images/latest/
+      - Settings -> System update -> Click Install.
       - Wait till a few minutes for the update to be installed.
-      - Do NOT reboot.
-      - Open Magisk Manager.
-      - Go to Install > Install and click on Direct Install.
+      - Do NOT reboot!
+      - Open Magisk.
       - Inside Magisk Manager, head over to Install/Install/Inactive Slot (After OTA).
       - Manually reboot the OnePlus 7T Pro.
-      - Updates folder and magisk patch is not needed, but merely in case of issues
-         when doing an update.
 
