@@ -79,6 +79,9 @@ How to install OTA update and keep root:
          STOCK/updates.
       - Extract images:
          ../../payload-dumper-go One*.zip
+      - Copy boot.img back to the phone.
+      - Patch boot.img:
+         Magisk -> Install -> Select and Patch a File
       - Tap on ‘Local upgrade‘ and select the downloaded OTA file needed for installing the update.
       - Click Install.
       - Wait till a few minutes for the update to be installed.
@@ -87,4 +90,15 @@ How to install OTA update and keep root:
       - Go to Install > Install and click on Direct Install.
       - Inside Magisk Manager, head over to Install/Install/Inactive Slot.
       - Manually reboot the OnePlus 7T Pro.
+   Update from 11 stable to 11+ stable whilst retaining root:
+      1. Download the relevant firmware for your device via oxygen updater
+      2. Open Magisk and remove all the modules you have installed, then reboot
+      **NOTE- At this point I tend to copy out the whole firmware to my computer, incase I need it in the future, the boot img and patched boot img are at the foot of this guide, I'll always upload the latest firmware as soon as it comes out for the UK/EU model
+      3. Open up settings / system / system updates , click the cog and select "Local Upgrade" the file should be listed on screen, if not then move the file to the root of your phones storage.
+      4. Click install and allow it to go through the process
+      **NOTE- DO NOT REBOOT AT THIS POINT YOU WILL LOSE THE ABILITY TO PATCH ON THE FLY, SIMPLY BACK OUT OF THE SCREEN WHICH SAYS "INSTALLATION COMPLETED. RESTART TO EXPERIENCE NEW FEATURES"
+      5. Open up magisk and click install (you may see two install buttons, top one is magisk and the bottom is magisk manager, we need the top one)
+      6. You'll be faced with a screen that has several options, you want to select "Install to Inactive slot (After OTA)" then select "LET'S GO" once complete click reboot.
+      7. Once your phones booted back up your system / files should all remain as they were and you should have root access.
+      You can now install all your modules again so long as they're compatible with the firmware you've just updated to.
 
