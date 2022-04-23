@@ -66,4 +66,25 @@ This will restore OnePlus 7T Pro to Stock Rom (Optionally Root):
 
 How to install OTA update and keep root:
    - https://nerdschalk.com/oneplus-7t-pro-root/
+   - https://forum.xda-developers.com/t/update-to-latest-firmware-ota-update-without-losing-magisk-root-permissions.4233391/
+   - https://topjohnwu.github.io/Magisk/ota.html
+   - https://forum.xda-developers.com/conversations/welcome-to-xda.14668127/#convMessage-14988935
+   - https://forum.xda-developers.com/t/root-android-11-latest-stock-and-patched-imgs-payload-dumper-magisk_patched-guides.4175033/
+   Summary:
+      - Disable all Magisk modules, before installing the update.
+      - Go to Settings > System update and click the Settings icon on the top right corner.
+      - Backup the OTA backup:
+         Internal -> .Ota
+      - Copy back to PC:
+         STOCK/updates.
+      - Extract images:
+         ../../payload-dumper-go One*.zip
+      - Tap on ‘Local upgrade‘ and select the downloaded OTA file needed for installing the update.
+      - Click Install.
+      - Wait till a few minutes for the update to be installed.
+      - Do NOT reboot.
+      - Open Magisk Manager.
+      - Go to Install > Install and click on Direct Install.
+      - Inside Magisk Manager, head over to Install/Install/Inactive Slot.
+      - Manually reboot the OnePlus 7T Pro.
 
