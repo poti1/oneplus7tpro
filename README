@@ -71,14 +71,13 @@ This will restore OnePlus 7T Pro to Stock Rom (Optionally Root):
          - Magisk -> Direct Install -> safetynet-fix-v2.2.1.zip 
          - Magisk -> Settings -> enable Zygisk
          - Magisk -> Settings -> Enforce DenyList
-         - Configure DenyList -> Search: "play"
-            com.google.android.gms
-            com.google.android.gms.unstable
+            - Show system apps.
+            - Select: Google Pay.
+            - Select: Google Play Store.
+            - Select: (Banking apps).
          - Magisk -> Settings -> Hide the Magisk app.
          - Reboot your device and test SafetyNet with an app like YASNAC
-         - If you're still failing CTS, clear app data for:
-            Google Play Services
-            Play Store
+         - Clear app data for "Play Store"
 
 How to install OTA update and keep root:
    - https://nerdschalk.com/oneplus-7t-pro-root/
@@ -115,4 +114,6 @@ How to install OTA update and keep root:
       - Open Magisk.
       - Inside Magisk Manager, head over to Install/Install/Inactive Slot (After OTA).
       - Manually reboot the OnePlus 7T Pro.
+      - Enable Magisk modules again.
+      - Check SafetyNet checks.
 
