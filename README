@@ -14,7 +14,7 @@ This tutorial explains how to root, unroot, and update a rooted OnePlus 7T Pro p
 
 
 #-----------------------------------
-              SETUP
+               SETUP
 #-----------------------------------
 
    - Follow this guide for setting up adb on the PC:
@@ -43,7 +43,7 @@ This tutorial explains how to root, unroot, and update a rooted OnePlus 7T Pro p
 
 
 #-----------------------------------
-            Custom ROM
+             Custom ROM
 #-----------------------------------
 
 This will change to a custom ROM (LineageOS):
@@ -51,7 +51,7 @@ This will change to a custom ROM (LineageOS):
 
 
 #-----------------------------------
-           RESTORE/ROOT
+            RESTORE/ROOT
 #-----------------------------------
 
 This will restore OnePlus 7T Pro to Stock Rom (Optionally Root):
@@ -100,7 +100,7 @@ This will restore OnePlus 7T Pro to Stock Rom (Optionally Root):
 
 
 #-----------------------------------
-            UPDATE
+               UPDATE
 #-----------------------------------
 
 How to install OTA update and keep root:
