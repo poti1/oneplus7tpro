@@ -174,13 +174,9 @@ How to install OTA update and keep root:
 
       - Reboot.
 
-      - Make 'local upgrade':
-      
         Settings
             -> System update
-            -> Top right icon 
-            -> Click ‘Local upgrade‘
-            -> Select the downloaded Ota file
+            -> Download & Update
 
       - This is just to have a copy of the update
         (incase future updates fail):
@@ -190,18 +186,22 @@ How to install OTA update and keep root:
 
             Internal/.Ota
 
-         - Copy back to PC:
+         - Copy back to PC (do not unzip it):
 
-            STOCK/images/OnePlus7TProOxygen_14.O.33_OTA_0330
+            STOCK/images/OnePlus7TProOxygen_14.O.33_OTA_0330.zip
+
+         - Extract images:
+
+            ../../payload-dumper-go One*.zip
+
+        - Rename extracted folder:
+
+            mv extracted* OnePlus7TProOxygen_14.O.33_OTA_0330 
 
          - Link new version:
 
             A11.0.7.1 -> OnePlus7TProOxygen_14.O.33_OTA_0330
             latest -> A11.0.7.1
-
-         - Extract images:
-
-            ../../payload-dumper-go One*.zip
 
          - Copy boot.img back to the phone.
 
@@ -218,8 +218,8 @@ How to install OTA update and keep root:
       - Continue with normal update:
         
         Settings
-            -> System update
-            -> Click Install
+            -> System Update
+            -> Click "Install Now"
 
       - Wait for the update to be installed.
 
