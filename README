@@ -232,8 +232,9 @@ How to install OTA update and keep root:
         Magisk Manager
             -> Install
             -> Install/Inactive Slot (After OTA).
+                (Acknowledge warning)
 
-      - Reboot
+      - Reboot.
 
       - Enable Magisk modules again.
 
