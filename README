@@ -174,11 +174,13 @@ How to install OTA update and keep root:
 
       - Reboot.
 
-      - Go to Settings > System update and click the
-        Settings icon on the top right corner.
-
-      - Tap on ‘Local upgrade‘ and select the downloaded
-        OTA file needed for installing the update.
+      - Make 'local upgrade':
+      
+        Settings
+            -> System update
+            -> Top right icon 
+            -> Click ‘Local upgrade‘
+            -> Select the downloaded Ota file
 
       - This is just to have a copy of the update
         (incase future updates fail):
@@ -213,7 +215,11 @@ How to install OTA update and keep root:
 
             STOCK/images/latest/
 
-      - Settings -> System update -> Click Install.
+      - Continue with normal update:
+        
+        Settings
+            -> System update
+            -> Click Install
 
       - Wait for the update to be installed.
 
@@ -221,10 +227,13 @@ How to install OTA update and keep root:
 
       - Open Magisk.
 
-      - Inside Magisk Manager, head over to
-        Install/Install/Inactive Slot (After OTA).
+      - Run Magisk post-installer:
 
-      - Manually reboot the OnePlus 7T Pro.
+        Magisk Manager
+            -> Install
+            -> Install/Inactive Slot (After OTA).
+
+      - Reboot
 
       - Enable Magisk modules again.
 
