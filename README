@@ -12,7 +12,11 @@
 
 This tutorial explains how to root, unroot, and update a rooted OnePlus 7T Pro phone.
 
-Setup:
+
+#-----------------------------------
+              SETUP
+#-----------------------------------
+
    - Follow this guide for setting up adb on the PC:
       https://www.androidauthority.com/lineageos-install-guide-893303/
    - Should have this downloaded and unzipped:
@@ -37,8 +41,18 @@ Setup:
          A11.0.6.1 -> OnePlus7TProOxygen_14.O.32_OTA_0320
          latest -> A11.0.6.1
 
+
+#-----------------------------------
+            Custom ROM
+#-----------------------------------
+
 This will change to a custom ROM (LineageOS):
    https://wiki.lineageos.org/devices/hotdog/#supported-models
+
+
+#-----------------------------------
+           RESTORE/ROOT
+#-----------------------------------
 
 This will restore OnePlus 7T Pro to Stock Rom (Optionally Root):
    - Create boot.img patch file (If rooting):
@@ -83,6 +97,11 @@ This will restore OnePlus 7T Pro to Stock Rom (Optionally Root):
          - Magisk -> Settings -> Hide the Magisk app.
          - Reboot your device and test SafetyNet with an app like YASNAC
          - Clear app data for "Play Store"
+
+
+#-----------------------------------
+            UPDATE
+#-----------------------------------
 
 How to install OTA update and keep root:
    - https://nerdschalk.com/oneplus-7t-pro-root/
