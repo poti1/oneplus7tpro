@@ -14,3 +14,5 @@ twrp-*
 OLD
 LineageOS/lineage-*.zip
 LineageOS/MindTheGapps*.zip
+LineageOS/LineageImages/*.img
+!LineageOS/LineageImages/super_empty.img
