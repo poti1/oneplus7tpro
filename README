@@ -82,6 +82,7 @@ This will restore OnePlus 7T Pro to Stock Rom
 
          cd STOCK
          adb reboot fastboot
+         fastboot devices
          FLASH_STOCK.sh    # --slot=all only works when in recovery->fastboot
 
    - Do a full factory reset through the TWRP recovery   # Optional?
@@ -260,6 +261,7 @@ Restore to Stock OS (follow instruction in an above section).
 Make sure these commands are already installed:
     adb devices
     fastboot -h
+    - https://wiki.lineageos.org/adb_fastboot_guide
 
 Unlock the bootloader.
     adb -d reboot bootloader
@@ -276,9 +278,16 @@ Flash lineage recovery:
     fastboot flash recovery recovery.img
 
 Install LineageOS zip:
-    - Factory reset/format data
+    adb -d reboot reovery
+    - Do "Factory reset/format data"
+    - Enable ADB.
+    - Apply Update -> Apply from ADB
     adb -d sideload lineage-*.zip
+    - Confirm to reboot.
 
 Install Google Apps:
+    - Enable ADB.
+    - Apply Update -> Apply from ADB
     adb -d sideload Mind*.zip
+    (Signature verification will fail)
     
