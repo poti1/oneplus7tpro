@@ -242,3 +242,43 @@ How to install OTA update and keep root:
 
       - Add star to github repo ;)
 
+#-----------------------------------
+      Custom ROM - LineageOS
+#-----------------------------------
+
+These steps should help to install LineageOS:
+
+XDA LineageOS Page:
+- https://xdaforums.com/t/rom-official-14-lineageos-21-for-oneplus-7t-pro-hotdog.4648947/
+
+Gapps Download:
+- https://wiki.lineageos.org/gapps
+- Click LineageOS 21 (Android 14) ARM64 (Download Mind*).
+
+Restore to Stock OS (follow instruction in an above section).
+
+Make sure these commands are already installed:
+    adb devices
+    fastboot -h
+
+Unlock the bootloader.
+    adb -d reboot bootloader
+    fastboot devices
+    fastboot oem unlock
+
+Flash extra partitions:
+    fastboot flash dtbo dtbo.img
+    fastboot flash vbmeta vbmeta.img
+
+Flash lineage recovery:
+    adb -d reboot bootloader
+    fastboot devices
+    fastboot flash recovery recovery.img
+
+Install LineageOS zip:
+    - Factory reset/format data
+    adb -d sideload lineage-*.zip
+
+Install Google Apps:
+    adb -d sideload Mind*.zip
+    
