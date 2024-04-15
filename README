@@ -35,7 +35,7 @@ This tutorial explains how to root, unroot, and update a rooted OnePlus 7T Pro p
    - Create folder: COPY_TO_DOWNLOADS and add to it:
 
       app-debug.apk (Magisk) from https://raw.githubusercontent.com/topjohnwu/magisk-files/canary/app-debug.apk
-      boot -> ../STOCK/images/lastest/boot.img
+      boot -> ../STOCK/images/latest/boot.img
       safetynet-fix-v2.2.1.zip from https://github.com/kdrag0n/safetynet-fix/releases/tag/v2.2.0
 
    - Stock Rom:
@@ -93,7 +93,7 @@ This will restore OnePlus 7T Pro to Stock Rom
    - Flash stock boot.img
 
          adb reboot fastboot
-         fastboot flash --slot=all boot boot.img
+         fastboot flash --slot=all boot images/latest/boot.img
 
    - Flash custom boot (If rooting):
 
@@ -248,6 +248,7 @@ How to install OTA update and keep root:
 #-----------------------------------
 
 These steps should help to install LineageOS:
+(Ended up reverting due to screen flicker).
 
 XDA LineageOS Page:
 - https://xdaforums.com/t/rom-official-14-lineageos-21-for-oneplus-7t-pro-hotdog.4648947/
@@ -291,3 +292,67 @@ Install Google Apps:
     adb -d sideload Mind*.zip
     (Signature verification will fail)
     
+#-----------------------------------
+         Clean Partitions
+#-----------------------------------
+
+https://rootmygalaxy.net/fix-remote-not-enough-space-to-resize-partition/
+https://xdaforums.com/t/fastboot-invalid-sparse-file-format-at-header-magic-how-to-fix.4281719/
+
+adb reboot fastboot
+fastboot boot RECOVERY.img
+
+# Get all fastboot variables:
+fastboot getvar all
+
+# Delete product partition
+fastboot delete-logical-partition product_a
+
+#-----------------------------------
+        QUALCOMM CrashDump Mode
+#-----------------------------------
+
+Bricked! - Not really.
+
+Press and hold volume Up and Power buttons for 8 seconds.
+
+Once shutdown:
+
+Press and hold Volume down and power.
+
+Once seeing the logo, release just the power button.
+
+
+#-----------------------------------
+         Errors / Warnings
+#-----------------------------------
+
+Warning: "Spare file format at header magic"
+Comment: "That warning is normal"
+
+Current image boot/recovery have been destroyed
+and can not boot.
+
+"Writing 'odm_b'                                    FAILED (remote: 'No such file or directory'"
+fastboot delete-logical-partition odm_b
+fastboot create-logical-partition odm_b 1000
+fastboot flash --slot=b odm images/latest/odm.img
+
+
+#-----------------------------------
+            Backup
+#-----------------------------------
+
+I did system update and would like to backup boot.img file.
+
+adb root
+adb shell
+su
+dd if=/dev/block/bootdevice/by-name/boot of=/sdcard/boot.img
+
+Can patch that file (boot.img) on the phone.
+
+
+
+
+
